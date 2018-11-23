@@ -56,7 +56,7 @@ class MavgComplexClassifier:
 
         self.show_result(model, X_test, y_test)
 
-        self.df['predict_' + name] = model.predict(X)
+        self.df['predict_' + name] = model.predict(sc.transform(X))
         self.df['test_predict_' + name] = self.df['predict_' + name]
 
         return model
@@ -82,7 +82,7 @@ class MavgComplexClassifier:
 
         self.show_result(model, X_test, y_test)
 
-        self.df['result'] = model.predict(X)
+        self.df['result'] = model.predict(sc.transform(X))
 
     def classify(self, X_train, y_train, input_dim, batch_size=20, epochs=1):
         # Initializing Neural Network
