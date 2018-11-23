@@ -65,7 +65,6 @@ class MavgComplexClassifier:
         for f_name in self.modelNames:
             self.df[self.df['test_predict_' + f_name] < 0.8]['test_predict_' + f_name] = 0
 
-
     def train(self, batch_size=20, epochs=1):
         x_cols = []
         for f_name in self.modelNames:
