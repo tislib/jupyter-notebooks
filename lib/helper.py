@@ -9,9 +9,16 @@ class AccuracyCalculator:
         noAcc = cm[1, 1] / (cm[1, 0] + cm[1, 1])
         accuracy = (yesAcc + noAcc) / 2
 
+        print('class_accuracy => accuracy: ', accuracy, 'risk: ', AccuracyCalculator.class_accuracy_ret(cm))
+
+    @staticmethod
+    def class_accuracy_ret(cm):
+        yesAcc = cm[0, 0] / (cm[0, 0] + cm[0, 1])
+        noAcc = cm[1, 1] / (cm[1, 0] + cm[1, 1])
+
         risk = cm[0, 1] / (cm[0, 1] + cm[1, 1]) if (cm[0, 1] + cm[1, 1]) > 0 else 1
 
-        print('class_accuracy => accuracy: ', accuracy, 'risk: ', risk)
+        return risk
 
     @staticmethod
     def optimistic_accuracy(y_pred, y_test, count):

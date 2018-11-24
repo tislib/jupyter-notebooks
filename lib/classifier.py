@@ -5,6 +5,7 @@ from keras.layers import Dense
 
 from sklearn.metrics import confusion_matrix
 from lib.helper import AccuracyCalculator
+from lib import classrisk
 
 
 class ComplexClassifier:
@@ -23,7 +24,7 @@ class MavgComplexClassifier:
         self.epilson = epilson
 
         self.df['f_price'] = self.df['price'].shift(-window)
-        self.df['value_real'] = self.df['f_price'] - self.df['price'] > self.epilson
+        self.df['value_real'] = self.df['f_price'] - self.df['price'] > self.epilson * 5
         self.models = {}
         self.modelNames = []
         pass
@@ -98,8 +99,13 @@ class MavgComplexClassifier:
         classifier.add(Dense(output_dim=1, init='uniform', activation='sigmoid'))
 
         # Compiling Neural Network
-        from keras import metrics
-        metric_names = [metrics.mae, 'accuracy']
+        metric_names = [
+            classrisk.risk,
+            classrisk.risk2,
+            classrisk.recall,
+            # classrisk.fbeta_score,
+            # classrisk.fmeasure
+        ]
         classifier.compile(optimizer='adam', loss='mean_squared_error', metrics=metric_names)
 
         # Fitting our model
