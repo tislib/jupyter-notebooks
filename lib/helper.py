@@ -35,9 +35,44 @@ class AccuracyCalculator:
         df = pd.DataFrame({'pred': y_pred, 'test': y_test})
         df = df.sort_values(by=['pred'], ascending=False)
         df = df.round(2)
-        df['ok'] =  df['test'].astype(int)
-        df['not_ok'] =  1 - df['test'].astype(int)
+        df['ok'] = df['test'].astype(int)
+        df['not_ok'] = 1 - df['test'].astype(int)
         df = df[['pred', 'ok', 'not_ok']].groupby('pred').agg('sum')
         df['risk'] = df['not_ok'] / (df['ok'] + df['not_ok'])
         df = df.sort_values(by=['pred'], ascending=False)
         return df
+
+
+class Functions:
+    @staticmethod
+    def calc_integral(df):
+        pass
+
+    @staticmethod
+    def calc_normal_dist(series, bound=1):
+        max = series.max()
+        min = series.min()
+
+        def normalize(item):
+            if item > 0:
+                return item * (bound / max)
+            else:
+                return item * ((0 - bound) / min)
+            pass
+
+        return series.apply(normalize)
+
+    @staticmethod
+    def calc_equal_dist(series):
+        def normalize(val):
+            item = 2.71 ** val
+            return item
+
+        return series.apply(normalize)
+
+    @staticmethod
+    def seriesTrueCount(series):
+        if (~series).all():
+            return 0
+        else:
+            return series.value_counts()[True]

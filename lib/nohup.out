@@ -1,0 +1,13 @@
+[I 15:54:34.874 NotebookApp] Writing notebook server cookie secret to /run/user/1000/jupyter/notebook_cookie_secret
+[I 15:54:35.051 NotebookApp] [jupyter_nbextensions_configurator] enabled 0.4.0
+[I 15:54:35.071 NotebookApp] JupyterLab extension loaded from /home/taleh/anaconda3/lib/python3.6/site-packages/jupyterlab
+[I 15:54:35.071 NotebookApp] JupyterLab application directory is /home/taleh/anaconda3/share/jupyter/lab
+[I 15:54:35.072 NotebookApp] Serving notebooks from local directory: /home/taleh/Projects/TensorTradeBase/lib
+[I 15:54:35.072 NotebookApp] The Jupyter Notebook is running at:
+[I 15:54:35.072 NotebookApp] http://10.0.1.77:8888/
+[I 15:54:35.072 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[W 15:54:35.072 NotebookApp] No web browser found: could not locate runnable browser.
+[I 15:54:41.177 NotebookApp] 302 GET /tree? (10.0.1.2) 0.64ms
+[I 15:54:43.517 NotebookApp] 302 POST /login?next=%2Ftree%3F (10.0.1.2) 2.81ms
+[C 15:54:55.019 NotebookApp] received signal 15, stopping
+[I 15:54:55.021 NotebookApp] Shutting down 0 kernels
